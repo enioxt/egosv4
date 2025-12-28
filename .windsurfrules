@@ -1,0 +1,54 @@
+# .windsurfrules — EGOSv4 Framework
+# VERSION 1.0.0
+# UPDATED: 2025-12-28
+
+---
+sacred_code: "000.111.369.963.1618"
+version: "1.0.0"
+project: "EGOSv4"
+architecture: "MCP-FIRST + AGENTS.md"
+---
+
+## CANONICAL SOURCE
+
+> **AGENTS.md** é a fonte única de verdade para TODOS os agentes AI.
+
+## PRIME DIRECTIVE
+
+> **NEVER write manual logic if a Tool (MCP) exists.**
+
+## 8 MANDAMENTOS
+
+1. **START** → /start antes de trabalhar
+2. **READ** → "Já Concluído" = NÃO REIMPLEMENTAR
+3. **SSOT** → Tasks APENAS em TASKS.md
+4. **THINK** → Sequential Thinking (P0=7, P1=5, P2=3)
+5. **PORT** → Padronize portas por projeto
+6. **COMMIT** → Convencional cada 30-60min
+7. **SIZE** → 500/componente, 400/página, 300/API
+8. **END** → /end ao finalizar
+
+## MCPs CRÍTICOS
+
+| MCP | Prefixo | Uso |
+|-----|---------|-----|
+| Sequential Thinking | mcp18_ | Planejamento |
+| Memory | mcp13_ | Persistência |
+| Filesystem | mcp7_ | Arquivos |
+| Egos-Core | mcp4_ | Tasks, diagnóstico |
+| Exa | mcp5_ | Pesquisa |
+| Supabase | mcp20_ | Database |
+
+## WORKFLOW TRIGGERS
+
+| Trigger | Workflow |
+|---------|----------|
+| Task P0/P1 | mcp18_sequentialthinking |
+| Criando arquivo | /research |
+| Modificando UI | /visual |
+| Bug/Erro | /debug |
+
+---
+
+*"The best code is no code. Use MCPs. One source of truth."*
+
