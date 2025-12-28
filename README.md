@@ -17,7 +17,6 @@
 |-----|-----------|:------:|
 | **Cortex** | Second Brain pessoal com AI | 🟢 |
 | **Intelink** | Sistema de análise investigativa | 🟢 |
-| **Carteira Livre** | Marketplace de serviços | 🟢 |
 | **Pattern Detector** | Análise de padrões comportamentais | 🔄 |
 
 ## 🚀 Quick Start
@@ -92,7 +91,6 @@ Este projeto usa um modelo de **contribuição voluntária**:
 ## 🔗 Links
 
 - **Framework:** [github.com/enioxt/egosv4](https://github.com/enioxt/egosv4)
-- **Cortex:** [github.com/enioxt/cortex](https://github.com/enioxt/cortex)
 - **Intelink:** [github.com/enioxt/intelink](https://github.com/enioxt/intelink)
 
 ---

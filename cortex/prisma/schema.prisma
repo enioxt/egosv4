@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model SourceFile {
+  id        String   @id @default(cuid())
+  path      String   @unique
+  inode     BigInt?
+  hash      String?
+  size      Int?
+  lens      String
+  sourceId  String
+  status    String   @default("pending") // pending, processing, indexed, error
+  error     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  insights  Insight[]
+
+  @@index([inode])
+  @@index([status])
+  @@index([sourceId])
+}
+
+model Insight {
+  id          String   @id @default(cuid())
+  title       String
+  content     String
+  category    String
+  lens        String
+  confidence  Float    @default(0.8)
+  metadata    String?  // JSON string
+  sourceFile  SourceFile? @relation(fields: [sourceFileId], references: [id], onDelete: Cascade)
+  sourceFileId String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // Relations for graph
+  linksFrom   InsightLink[] @relation("FromInsight")
+  linksTo     InsightLink[] @relation("ToInsight")
+
+  @@index([category])
+  @@index([lens])
+  @@index([sourceFileId])
+}
+
+model InsightLink {
+  id           String   @id @default(cuid())
+  fromInsight  Insight  @relation("FromInsight", fields: [fromInsightId], references: [id], onDelete: Cascade)
+  fromInsightId String
+  toInsight    Insight  @relation("ToInsight", fields: [toInsightId], references: [id], onDelete: Cascade)
+  toInsightId  String
+  relationship String
+  strength     Float    @default(0.5)
+  createdAt    DateTime @default(now())
+
+  @@unique([fromInsightId, toInsightId])
+  @@index([fromInsightId])
+  @@index([toInsightId])
+}
+
+model CommandHistory {
+  id        String   @id @default(cuid())
+  command   String
+  cwd       String?
+  exitCode  Int?
+  output    String?
+  duration  Int?     // milliseconds
+  createdAt DateTime @default(now())
+
+  @@index([createdAt])
+}
+
+model ProcessingQueue {
+  id        String   @id @default(cuid())
+  filePath  String
+  sourceId  String
+  priority  Int      @default(0)
+  attempts  Int      @default(0)
+  status    String   @default("pending") // pending, processing, done, failed
+  error     String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status])
+  @@index([priority])
+}
