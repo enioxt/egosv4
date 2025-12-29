@@ -226,6 +226,3 @@ Veja [CONTRIBUTING.md](CONTRIBUTING.md).
 - **Intelink:** [github.com/enioxt/intelink](https://github.com/enioxt/intelink)
 - **Autor:** [@enioxt](https://github.com/enioxt)
 
----
-
-*"The best code is no code. Use MCPs. One source of truth."*
